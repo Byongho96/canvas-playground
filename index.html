@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16:9 Canvas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="canvasContainer">
+      <canvas id="myCanvas"></canvas>
+    </div>
+    <div class="flexbox">
+      <label for="numberLines">
+        <input id="numberLines" type="number" value="50" min="0" max="1000" />
+        라인 수
+      </label>
+      <label for="startColor">
+        <input id="startColor" type="color" value="#ff0000" />
+        시작 컬러
+      </label>
+      <label for="endColor">
+        <input id="endColor" type="color" value="#ffff00" />
+        끝 컬러
+      </label>
+    </div>
+    <div class="flexbox">
+      <button id="draw">그리기</button>
+      <button id="reset">리셋</button>
+    </div>
+    <script type="module" src="script.module.js"></script>
+  </body>
+</html>
