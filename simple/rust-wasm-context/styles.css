@@ -1,0 +1,20 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+canvas {
+  width: 90%;
+  aspect-ratio: 16/9;
+  background-color: black;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}

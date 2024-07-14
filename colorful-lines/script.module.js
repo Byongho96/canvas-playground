@@ -2,53 +2,65 @@ import { getGradientColor } from './utils/colors.module.js'
 
 let animationID = null
 const canvas = document.getElementById('myCanvas')
-const devicePixelRatio = window.devicePixelRatio || 1
+const ctx = canvas.getContext('2d')
 
+const devicePixelRatio = window.devicePixelRatio || 1
 canvas.width = canvas.offsetWidth * devicePixelRatio
 canvas.height = canvas.offsetHeight * devicePixelRatio
-const ctx = canvas.getContext('2d')
 
 let numOfLInes = 50
 let startColor = '#ff0000'
 let endColor = '#ffff00'
 
-const numberInput = document.getElementById('numberLines')
-numberInput.addEventListener('change', (e) => {
-  const value = Number(e.target.value)
+function init() {
+  const numberInput = document.getElementById('numberLines')
+  numberInput.addEventListener('change', (e) => {
+    const value = Number(e.target.value)
 
-  if (value < 0) numOfLInes = 0
-  else if (value > 1000) numOfLInes = 1000
+    if (value < 0) {
+      numOfLInes = 0
+      numberInput.value = 0
+    } else if (value > 1000) {
+      numOfLInes = 1000
+      numberInput.value = 1000
+    } else {
+      numOfLInes = value
+      numberInput.value = value
+    }
+  })
 
-  numOfLInes = value
-})
+  const startColorInput = document.getElementById('startColor')
+  startColorInput.addEventListener('change', (e) => {
+    startColor = e.target.value
+  })
 
-const startColorInput = document.getElementById('startColor')
-startColorInput.addEventListener('change', (e) => {
-  startColor = e.target.value
-})
+  const endColorInput = document.getElementById('endColor')
+  endColorInput.addEventListener('change', (e) => {
+    endColor = e.target.value
+  })
 
-const endColorInput = document.getElementById('endColor')
-endColorInput.addEventListener('change', (e) => {
-  endColor = e.target.value
-})
+  const resetButton = document.getElementById('reset')
+  resetButton.addEventListener('click', () => {
+    reset()
+  })
 
-const resetButton = document.getElementById('reset')
-resetButton.addEventListener('click', () => {
-  reset()
-})
+  const drawButton = document.getElementById('draw')
+  drawButton.addEventListener('click', () => {
+    reset()
+    draw()
+  })
+}
 
-const drawButton = document.getElementById('draw')
-drawButton.addEventListener('click', () => {
-  reset()
-  drawLines()
-})
+init()
 
 function reset() {
   animationID && cancelAnimationFrame(animationID)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 }
 
-function drawLines() {
+reset()
+
+function draw() {
   const lines = []
 
   for (let i = 0; i < numOfLInes; i++) {
@@ -58,12 +70,13 @@ function drawLines() {
   }
 
   let prevTime = performance.now()
+
   function drawFrame() {
     const curTime = performance.now()
     const delta = curTime - prevTime
     prevTime = curTime
 
-    lines.forEach((line) => line.draw(delta))
+    lines.forEach((line) => line.update(delta))
     animationID = requestAnimationFrame(drawFrame)
   }
 
@@ -79,7 +92,7 @@ class Line {
     this.color = color
   }
 
-  draw(delta) {
+  update(delta) {
     if (this.x < 0 || this.x > canvas.width) {
       this.dx *= -1
     }
@@ -88,6 +101,7 @@ class Line {
     }
 
     ctx.strokeStyle = this.color
+
     ctx.beginPath()
     ctx.moveTo(this.x, this.y)
     this.x += this.dx * delta * 0.05 * devicePixelRatio
@@ -96,5 +110,3 @@ class Line {
     ctx.stroke()
   }
 }
-
-reset()

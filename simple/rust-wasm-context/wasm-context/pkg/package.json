@@ -1,0 +1,15 @@
+{
+  "name": "wasm-context",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "wasm_context_bg.wasm",
+    "wasm_context.js",
+    "wasm_context.d.ts"
+  ],
+  "main": "wasm_context.js",
+  "types": "wasm_context.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
