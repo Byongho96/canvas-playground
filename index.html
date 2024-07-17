@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Playground</title>
+    <style>
+      body {
+        padding-top: 1rem;
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 1rem;
+      }
+
+      li {
+        list-style: disc;
+
+        a::before {
+          content: '📁\00a0';
+          display: inline-block;
+        }
+      }
+
+      /*tablet*/
+      @media (max-width: 1023px) {
+        ul {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /*mobile*/
+      @media (max-width: 700px) {
+        ul {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="./simple/">Wasm performance</a>
+      </li>
+      <li>
+        <a href="./colorful-lines/">Colorful Lines</a>
+      </li>
+    </ul>
+  </body>
+</html>
