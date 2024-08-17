@@ -1,10 +1,12 @@
 import { getRandom } from './utils.module.js'
 
+const PARTICLE_COUNTS = 300
+const scale = window.devicePixelRatio || 1
+
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 
-const PARTICLE_COuNTS = 300
-const particles = []
+let particles = []
 
 let width, height
 let isFlag = false
@@ -15,16 +17,18 @@ const mouse = {
 
 function init() {
   resize()
-  for (let i = 0; i < PARTICLE_COuNTS; i++) {
+}
+
+function resize() {
+  width = canvas.width = canvas.offsetWidth * scale
+  height = canvas.height = canvas.offsetHeight * scale
+
+  particles = []
+  for (let i = 0; i < PARTICLE_COUNTS; i++) {
     const x = Math.random() * canvas.width
     const y = Math.random() * canvas.height
     particles.push(new Particle(x, y))
   }
-}
-
-function resize() {
-  width = canvas.width = canvas.offsetWidth
-  height = canvas.height = canvas.offsetHeight
 }
 
 function enableFlag(e) {
@@ -32,8 +36,8 @@ function enableFlag(e) {
   if (e instanceof TouchEvent) {
     e = e.touches[0]
   }
-  mouse.x = e.clientX
-  mouse.y = e.clientY
+  mouse.x = e.clientX * scale
+  mouse.y = e.clientY * scale
 }
 
 function anchorPoint(e) {
@@ -41,8 +45,8 @@ function anchorPoint(e) {
   if (e instanceof TouchEvent) {
     e = e.touches[0]
   }
-  mouse.x = e.clientX
-  mouse.y = e.clientY
+  mouse.x = e.clientX * scale
+  mouse.y = e.clientY * scale
 }
 
 function releasePoint() {
@@ -73,7 +77,7 @@ drawCanvas()
 document.addEventListener('DOMContentLoaded', init)
 window.addEventListener('resize', resize)
 window.addEventListener('mousedown', enableFlag)
-window.addEventListener('touchdown', enableFlag)
+window.addEventListener('touchstart', enableFlag)
 window.addEventListener('mousemove', anchorPoint)
 window.addEventListener('touchmove', anchorPoint)
 window.addEventListener('mouseup', releasePoint)
@@ -97,7 +101,7 @@ class Particle {
     ctx.beginPath()
     ctx.moveTo(this.x, this.y)
     ctx.lineTo(this.nx, this.ny)
-    ctx.lineWidth = 2
+    ctx.lineWidth = 3
     ctx.strokeStyle = this.color
     ctx.stroke()
     ctx.closePath()

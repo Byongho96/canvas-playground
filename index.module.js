@@ -1,8 +1,10 @@
 import { easeQutQuart, getRadomInt } from './utils.module.js'
 
+const VARIATION = 10
+const scale = window.devicePixelRatio || 1
+
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
-const VARIATION = 10
 
 let width, height
 const balls = []
@@ -12,19 +14,23 @@ function init() {
 }
 
 function resize() {
-  width = canvas.width = canvas.offsetWidth
-  height = canvas.height = canvas.offsetHeight
+  width = canvas.width = canvas.offsetWidth * scale
+  height = canvas.height = canvas.offsetHeight * scale
 }
 
-function mousemove(e) {
-  const x = e.clientX + getRadomInt(-VARIATION, VARIATION)
-  const y = e.clientY + getRadomInt(-VARIATION, VARIATION)
+function createBall(e) {
+  if (e instanceof TouchEvent) {
+    e = e.touches[0]
+  }
+
+  const x = e.clientX * scale + getRadomInt(-VARIATION, VARIATION)
+  const y = e.clientY * scale + getRadomInt(-VARIATION, VARIATION)
   balls.push(
     new Ball(
       x,
       y,
-      (x - e.clientX) / VARIATION,
-      (y - e.clientY) / VARIATION,
+      (x - e.clientX * scale) / VARIATION,
+      (y - e.clientY * scale) / VARIATION,
       getRadomInt(10, 25),
       `rgb(
        ${getRadomInt(150, 255)},
@@ -53,7 +59,8 @@ drawCanvas()
 
 document.addEventListener('DOMContentLoaded', init)
 window.addEventListener('resize', resize)
-window.addEventListener('mousemove', mousemove)
+window.addEventListener('mousemove', createBall)
+window.addEventListener('touchmove', createBall)
 
 class Ball {
   time = 0

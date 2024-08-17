@@ -28,6 +28,7 @@ a {
   top: 1rem;
   left: 1rem;
   color: #c2c2c2;
+  user-select: none;
   /* text-decoration: none; */
 }
 
