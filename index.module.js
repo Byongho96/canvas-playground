@@ -64,7 +64,7 @@ window.addEventListener('touchmove', createBall)
 
 class Ball {
   time = 0
-  ttl1 = 5 // time to bigger
+  ttl1 = 10 // time to bigger
   ttl2 = 50 // time to smaller
 
   constructor(x, y, dx, dy, radius, color) {

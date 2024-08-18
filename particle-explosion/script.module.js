@@ -17,18 +17,28 @@ const mouse = {
 
 function init() {
   resize()
+  for (let i = 0; i < PARTICLE_COUNTS; i++) {
+    const x = Math.random() * canvas.width
+    const y = Math.random() * canvas.height
+    particles.push(new Particle(x, y))
+  }
 }
 
 function resize() {
   width = canvas.width = canvas.offsetWidth * scale
   height = canvas.height = canvas.offsetHeight * scale
 
-  particles = []
-  for (let i = 0; i < PARTICLE_COUNTS; i++) {
-    const x = Math.random() * canvas.width
-    const y = Math.random() * canvas.height
-    particles.push(new Particle(x, y))
-  }
+  particles.forEach((particle) => {
+    if (
+      particle.x < 0 ||
+      particle.x > width ||
+      particle.y < 0 ||
+      particle.y > height
+    ) {
+      particle.x = Math.random() * width
+      particle.y = Math.random() * height
+    }
+  })
 }
 
 function enableFlag(e) {
