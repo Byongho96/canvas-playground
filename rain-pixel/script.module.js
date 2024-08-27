@@ -9,7 +9,7 @@ let width, height
 const scale = window.devicePixelRatio || 1
 const ctx = canvas.getContext('2d')
 
-const NUM_PARTICLES = 5000
+const NUM_PARTICLES = 4000
 let particles = []
 let brightMap = undefined
 
@@ -98,7 +98,7 @@ class Particle {
   constructor() {
     this.x = Math.random() * width
     this.y = 0
-    this.radius = Math.random() * 1.5 + 1
+    this.radius = (Math.random() * 1.5 + 1) * scale
     this.speed = Math.random() * 3.5
     this.brightness = 0
   }
