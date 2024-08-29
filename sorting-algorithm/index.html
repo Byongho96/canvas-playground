@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Algorithm Visualization</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.module.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <a href="../">Go Back</a>
+      <button class="info">
+        <span>Time Complexity</span>
+        <table>
+          <thead>
+              <tr>
+                  <th>Algorithm</th>
+                  <th>Best Case</th>
+                  <th>Average Case</th>
+                  <th>Worst Case</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Bubble Sort</td>
+                  <td>O(n)</td>
+                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(n<sup>2</sup>)</td>
+              </tr>
+              <tr>
+                  <td>Selection Sort</td>
+                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(n<sup>2</sup>)</td>
+              </tr>
+              <tr>
+                  <td>Insertion Sort</td>
+                  <td>O(n)</td>
+                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(n<sup>2</sup>)</td>
+              </tr>
+              <tr>
+                  <td>Merge Sort</td>
+                  <td>O(n log n)</td>
+                  <td>O(n log n)</td>
+                  <td>O(n log n)</td>
+              </tr>
+              <tr>
+                  <td>Shell Sort</td>
+                  <td>O(n log n)</td>
+                  <td>O((n log n)<sup>2</sup>)</td>
+                  <td>O(n<sup>2</sup>)</td>
+              </tr>
+              <tr>
+                  <td>Counting Sort</td>
+                  <td>O(n + k)</td>
+                  <td>O(n + k)</td>
+                  <td>O(n + k)</td>
+              </tr>
+          </tbody>
+      </table>
+      </button>
+    </header>
+    <main>
+      <h1>
+        Sorting Algorithm Visualization
+      </h1>
+      <form class="form">
+        <label for="number">Number
+          <input type="number" id="number" value="100" min="0" max="10000" />
+        </label>
+        <label for="number">Max
+          <input type="number" id="maxVal" value="100" min="0" max="10000" />
+        </label>
+        <button type="button" id="reset">Reset</button>
+        <button type="button" id="start">Start</button>
+      </form>
+      <ul>
+        <li>
+          <canvas id="bubble"></canvas>
+          <h2>Bubble Sort</h2>
+        </li>
+        <li>
+          <canvas id="selection"></canvas>
+          <h2>Selection Sort</h2>
+        </li>
+        <li>
+          <canvas id="insertion"></canvas>
+          <h2>Insertion Sort</h2>
+        </li>
+        <li>
+          <canvas id="shell"></canvas>
+          <h2>Shell Sort</h2>
+        </li>
+        <li>
+          <canvas id="merge"></canvas>
+          <h2>Merge Sort</h2>
+        </li>
+        <li>
+          <canvas id="counting"></canvas>
+          <h2>Counting Sort</h2>
+        </li>
+      </ul>
+    </main>
+</html>
