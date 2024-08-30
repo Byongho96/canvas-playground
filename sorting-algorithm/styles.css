@@ -1,92 +1,146 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-a {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  user-select: none;
-}
-
-main {
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  justify-content: center;
-  align-content: center;
+body {
+  grid-template-rows: auto 1fr;
   height: 100vh;
-  padding: 1rem;
 }
 
-.info {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 1em 0;
 }
 
-.info:hover > table {
+button.info {
+  position: relative;
+  border: none;
+  border-radius: 0.2em;
+  padding: 0.5em 1em;
+  background-color: #2164f3;
+  color: white;
+  cursor: pointer;
+}
+
+button.info:hover {
   display: block;
+
+  table {
+    display: block;
+  }
 }
 
-.info > table {
+.info table {
   display: none;
   position: absolute;
   top: 100%;
   right: 0;
 }
 
-form {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
 table {
   background-color: #f2f2f2;
   white-space: nowrap;
-  font-size: 0.8rem;
+  font-size: 0.9em;
+  color: black;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 0.4em 0.6em;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
 }
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+
+h1 {
   text-align: center;
+  font-size: 1.6em;
 }
-th {
-  background-color: #f2f2f2;
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+
+  div {
+    display: flex;
+    gap: 1em;
+  }
+
+  input[type='number'] {
+    width: 4em;
+    height: 2em;
+    padding: 0em 0.5em;
+    text-align: center;
+  }
+
+  button {
+    border: none;
+    border-radius: 0.2em;
+    height: 2em;
+    padding: 0em 1em;
+    color: white;
+    cursor: pointer;
+  }
+
+  button#reset {
+    background-color: #8f8f8f;
+  }
+
+  button#start {
+    background-color: #4caf50;
+  }
 }
 
 ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1em;
   list-style: none;
-}
 
-li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-h1 {
-  display: inline-block;
-}
+  h2 {
+    margin: 0.3em 0 0 0;
+    font-size: 1.2em;
+  }
 
-h2 {
-  margin: 0.3em 0 0 0;
-  font-size: 1.2rem;
-}
-
-canvas {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background-color: #eeeeee;
+  canvas {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #eeeeee;
+  }
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
+  body {
+    font-size: 0.78rem;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+  }
+
   ul {
     grid-template-columns: repeat(2, 1fr);
   }

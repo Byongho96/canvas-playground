@@ -24,39 +24,39 @@
           <tbody>
               <tr>
                   <td>Bubble Sort</td>
-                  <td>O(n)</td>
-                  <td>O(n<sup>2</sup>)</td>
-                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(N)</td>
+                  <td>O(N<sup>2</sup>)</td>
+                  <td>O(N<sup>2</sup>)</td>
               </tr>
               <tr>
                   <td>Selection Sort</td>
-                  <td>O(n<sup>2</sup>)</td>
-                  <td>O(n<sup>2</sup>)</td>
-                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(N<sup>2</sup>)</td>
+                  <td>O(N<sup>2</sup>)</td>
+                  <td>O(N<sup>2</sup>)</td>
               </tr>
               <tr>
                   <td>Insertion Sort</td>
-                  <td>O(n)</td>
-                  <td>O(n<sup>2</sup>)</td>
-                  <td>O(n<sup>2</sup>)</td>
-              </tr>
-              <tr>
-                  <td>Merge Sort</td>
-                  <td>O(n log n)</td>
-                  <td>O(n log n)</td>
-                  <td>O(n log n)</td>
+                  <td>O(N)</td>
+                  <td>O(N<sup>2</sup>)</td>
+                  <td>O(N<sup>2</sup>)</td>
               </tr>
               <tr>
                   <td>Shell Sort</td>
-                  <td>O(n log n)</td>
-                  <td>O((n log n)<sup>2</sup>)</td>
-                  <td>O(n<sup>2</sup>)</td>
+                  <td>O(N*logN)</td>
+                  <td>O((N*logN)<sup>2</sup>)</td>
+                  <td>O(N<sup>2</sup>)</td>
+              </tr>
+              <tr>
+                  <td>Merge Sort</td>
+                  <td>O(N*logN)</td>
+                  <td>O(N*logN)</td>
+                  <td>O(N*logN)</td>
               </tr>
               <tr>
                   <td>Counting Sort</td>
-                  <td>O(n + k)</td>
-                  <td>O(n + k)</td>
-                  <td>O(n + k)</td>
+                  <td>O(N + M)</td>
+                  <td>O(N + M)</td>
+                  <td>O(N + M)</td>
               </tr>
           </tbody>
       </table>
@@ -67,14 +67,18 @@
         Sorting Algorithm Visualization
       </h1>
       <form class="form">
-        <label for="number">Number
-          <input type="number" id="number" value="100" min="0" max="10000" />
-        </label>
-        <label for="number">Max
-          <input type="number" id="maxVal" value="100" min="0" max="10000" />
-        </label>
-        <button type="button" id="reset">Reset</button>
-        <button type="button" id="start">Start</button>
+        <div>
+          <label for="number">Number
+            <input type="number" id="number" value="100" min="0" max="10000" />
+          </label>
+          <label for="number">Max
+            <input type="number" id="maxVal" value="100" min="0" max="10000" />
+          </label>
+        </div>
+        <div>
+          <button type="button" id="reset">Reset</button>
+          <button type="button" id="start">Start</button>
+        </div>
       </form>
       <ul>
         <li>
