@@ -109,7 +109,7 @@ form {
 ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
+  gap: 2em;
   list-style: none;
 
   li {

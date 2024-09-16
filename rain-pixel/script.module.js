@@ -98,7 +98,7 @@ class Particle {
   constructor() {
     this.x = Math.random() * width
     this.y = 0
-    this.radius = Math.random() * 1.2 * scale + 1
+    this.radius = Math.random() * 0.7 * scale + 1.5
     this.speed = (this.radius / (1.2 * scale)) * 3.5
     this.brightness = 0
   }
