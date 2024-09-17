@@ -9,12 +9,20 @@ let width, height
 const scale = window.devicePixelRatio || 1
 
 const particle = new Particle(scale)
-
-const walls = []
+let walls = []
 
 function init() {
   resize()
-  for (let i = 0; i < 5; i++) {
+}
+
+function resize() {
+  canvas.width = canvas.offsetWidth * scale
+  canvas.height = canvas.offsetHeight * scale
+  width = Math.floor(canvas.width)
+  height = Math.floor(canvas.height)
+
+  walls = []
+  for (let i = 0; i < 8; i++) {
     const x1 = Math.random() * width
     const y1 = Math.random() * height
     const x2 = Math.random() * width
@@ -25,13 +33,6 @@ function init() {
   walls.push(new Wall(width, 0, width, height)) // right
   walls.push(new Wall(width, height, 0, height)) // bottom
   walls.push(new Wall(0, height, 0, 0))
-}
-
-function resize() {
-  canvas.width = canvas.offsetWidth * scale
-  canvas.height = canvas.offsetHeight * scale
-  width = Math.floor(canvas.width)
-  height = Math.floor(canvas.height)
 }
 
 function draw() {

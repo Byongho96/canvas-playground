@@ -9,7 +9,7 @@ class Particle {
     this.scale = scale
 
     this.rays = []
-    for (let a = 0; a < Math.PI * 2; a += (Math.PI / 360) * 10) {
+    for (let a = 0; a < Math.PI * 2; a += (Math.PI / 360) * 5) {
       this.rays.push(new Ray(this.pos, a))
     }
   }
